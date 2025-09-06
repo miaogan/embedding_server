@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  embedding-server:
+    image: embedding_server:latest
+    container_name: bge-m3-embedding-server
+    ports:
+      - "5000:5000"
+    environment:
+      - EMBEDDING_MODEL_PATH=/models/BAAI/bge-m3
+      - EMBEDDING_DEVICE=cpu
+      - EMBEDDING_USE_FP16=False
+      - MAX_TEXT_LENGTH=512
+      - EMBEDDING_SERVICE_HOST=0.0.0.0
+      - EMBEDDING_SERVICE_PORT=5000
+    volumes:
+      - /models/BAAI/bge-m3:/models/BAAI/bge-m3 # 挂载模型目录
+      - /logs:/app/logs  # 挂载日志目录（如果需要）
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:5000/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s

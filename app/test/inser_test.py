@@ -18,8 +18,8 @@ TSV_FILE_PATH = os.getenv("TSV_FILE_PATH",
                           "D:\\work_space\\python_project\\embedding_server\\quora_duplicate_questions.tsv")
 MILVUS_URI = os.getenv("MILVUS_URI", "http://localhost:19530")
 COLLECTION_NAME = os.getenv("COLLECTION_NAME", "hybrid_demo")
-EMBEDDING_SERVICE_URL = os.getenv("EMBEDDING_SERVICE_URL", "http://localhost:5000/embed")  # FastAPI 服务地址
-HEALTH_CHECK_URL = os.getenv("HEALTH_CHECK_URL", "http://localhost:5000/health")  # FastAPI 健康检查地址
+EMBEDDING_SERVICE_URL = os.getenv("EMBEDDING_SERVICE_URL", "http://122.51.107.129:5000/embed")  # FastAPI 服务地址
+HEALTH_CHECK_URL = os.getenv("HEALTH_CHECK_URL", "http://122.51.107.129:5000/health")  # FastAPI 健康检查地址
 BATCH_SIZE = int(os.getenv("BATCH_SIZE", 50))
 MAX_DOCS = int(os.getenv("MAX_DOCS", 500))
 API_TIMEOUT = int(os.getenv("API_TIMEOUT", 120))  # API 调用超时时间（秒）
